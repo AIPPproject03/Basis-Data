@@ -1,0 +1,540 @@
+<html>
+<head>
+<title>Modul 1 Basdat II.sql</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #bcbec4;}
+.s4 { color: #2aacb8;}
+.s5 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Modul 1 Basdat II.sql</font>
+</center></td></tr></table>
+<pre><span class="s0"># BY AIPPproject03</span>
+<span class="s0"># Nama : A.Irwin Putra Pangesti</span>
+<span class="s0"># NIM  : 223020503162</span>
+<span class="s0"># CREATE TABLE:</span>
+<span class="s2">CREATE TABLE </span><span class="s1">Jabatan </span><span class="s3">(</span>
+    <span class="s1">ID_Jabatan </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">Nama_Jabatan </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s1">Gaji </span><span class="s2">INT</span>
+<span class="s3">);</span>
+<span class="s2">CREATE TABLE </span><span class="s1">Pegawai </span><span class="s3">(</span>
+    <span class="s1">ID_Pegawai </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">ID_Jabatan </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">Nama_Pegawai </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s1">Alamat </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s1">Username </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s2">Password VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">)</span>
+<span class="s3">);</span>
+<span class="s2">CREATE TABLE </span><span class="s1">Nomor_Pegawai </span><span class="s3">(</span>
+    <span class="s1">ID_Pegawai </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">ID_Nomor </span><span class="s2">INT</span><span class="s3">,</span>
+    <span class="s1">No_Telp </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">15</span><span class="s3">)</span>
+<span class="s3">);</span>
+
+<span class="s2">CREATE TABLE </span><span class="s1">Header_Transaksi </span><span class="s3">(</span>
+    <span class="s1">ID_Header </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">ID_Pegawai </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">ID_Transaksi </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">)</span>
+<span class="s3">);</span>
+<span class="s2">CREATE TABLE </span><span class="s1">Transaksi </span><span class="s3">(</span>
+    <span class="s1">ID_Transaksi </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">ID_Pelanggan </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">Tanggal_Pembelian </span><span class="s2">DATE</span><span class="s3">,</span>
+    <span class="s1">Total_Biaya </span><span class="s2">INT</span>
+<span class="s3">);</span>
+<span class="s2">CREATE TABLE </span><span class="s1">Pembelian_Sparepart </span><span class="s3">(</span>
+    <span class="s1">ID_Pembelian_Sparepart </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">ID_Transaksi </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">ID_Sparepart </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">Jumlah_Beli </span><span class="s2">INT</span>
+<span class="s3">);</span>
+<span class="s2">CREATE TABLE </span><span class="s1">Sparepart </span><span class="s3">(</span>
+    <span class="s1">ID_Sparepart </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">Nama_Sparepart </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s1">Stok </span><span class="s2">INT</span><span class="s3">,</span>
+    <span class="s1">Jenis_Sparepart </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s1">Harga </span><span class="s2">INT</span>
+<span class="s3">);</span>
+<span class="s2">CREATE TABLE </span><span class="s1">Pelanggan </span><span class="s3">(</span>
+    <span class="s1">ID_Pelanggan </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">Nama_Pelanggan </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">)</span>
+<span class="s3">);</span>
+<span class="s2">CREATE TABLE </span><span class="s1">Pembelian_Service </span><span class="s3">(</span>
+    <span class="s1">ID_Pembelian_Service </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">ID_Transaksi </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">ID_Pegawai </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">ID_Service </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">)</span>
+<span class="s3">);</span>
+<span class="s2">CREATE TABLE </span><span class="s1">Service </span><span class="s3">(</span>
+    <span class="s1">ID_Service </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">Nama_Service </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s1">Lama_Pengerjaan </span><span class="s2">INT</span><span class="s3">,</span>
+    <span class="s1">Harga </span><span class="s2">INT</span>
+<span class="s3">);</span>
+
+<span class="s0"># CREATE PRIMARY KEY:</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Pegawai</span>
+    <span class="s2">ADD PRIMARY KEY </span><span class="s3">(</span><span class="s1">ID_Pegawai</span><span class="s3">);</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Jabatan</span>
+    <span class="s2">ADD PRIMARY KEY </span><span class="s3">(</span><span class="s1">ID_Jabatan</span><span class="s3">);</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Nomor_Pegawai</span>
+    <span class="s2">ADD PRIMARY KEY </span><span class="s3">(</span><span class="s1">ID_Nomor</span><span class="s3">);</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Header_Transaksi</span>
+    <span class="s2">ADD PRIMARY KEY </span><span class="s3">(</span><span class="s1">ID_Header</span><span class="s3">);</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Pelanggan</span>
+    <span class="s2">ADD PRIMARY KEY </span><span class="s3">(</span><span class="s1">ID_Pelanggan</span><span class="s3">);</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Transaksi</span>
+    <span class="s2">ADD PRIMARY KEY </span><span class="s3">(</span><span class="s1">ID_Transaksi</span><span class="s3">);</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Pembelian_Sparepart</span>
+    <span class="s2">ADD PRIMARY KEY </span><span class="s3">(</span><span class="s1">ID_Pembelian_Sparepart</span><span class="s3">);</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Sparepart</span>
+    <span class="s2">ADD PRIMARY KEY </span><span class="s3">(</span><span class="s1">ID_Sparepart</span><span class="s3">);</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Pembelian_Service</span>
+    <span class="s2">ADD PRIMARY KEY </span><span class="s3">(</span><span class="s1">ID_Pembelian_Service</span><span class="s3">);</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Service</span>
+    <span class="s2">ADD PRIMARY KEY </span><span class="s3">(</span><span class="s1">ID_Service</span><span class="s3">);</span>
+
+<span class="s0"># CREATE FOREIGN KEY:</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Pegawai</span>
+    <span class="s2">ADD FOREIGN KEY </span><span class="s3">(</span><span class="s1">ID_Jabatan</span><span class="s3">) </span><span class="s2">REFERENCES </span><span class="s1">Jabatan</span><span class="s3">(</span><span class="s1">ID_Jabatan</span><span class="s3">) </span><span class="s2">ON DELETE CASCADE ON UPDATE CASCADE</span><span class="s3">;</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Nomor_Pegawai</span>
+    <span class="s2">ADD FOREIGN KEY </span><span class="s3">(</span><span class="s1">ID_Pegawai</span><span class="s3">) </span><span class="s2">REFERENCES </span><span class="s1">Pegawai</span><span class="s3">(</span><span class="s1">ID_Pegawai</span><span class="s3">) </span><span class="s2">ON DELETE CASCADE ON UPDATE CASCADE</span><span class="s3">;</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Header_Transaksi</span>
+    <span class="s2">ADD FOREIGN KEY </span><span class="s3">(</span><span class="s1">ID_Pegawai</span><span class="s3">) </span><span class="s2">REFERENCES </span><span class="s1">Pegawai</span><span class="s3">(</span><span class="s1">ID_Pegawai</span><span class="s3">) </span><span class="s2">ON DELETE CASCADE ON UPDATE CASCADE</span><span class="s3">,</span>
+    <span class="s2">ADD FOREIGN KEY </span><span class="s3">(</span><span class="s1">ID_Transaksi</span><span class="s3">) </span><span class="s2">REFERENCES </span><span class="s1">Transaksi</span><span class="s3">(</span><span class="s1">ID_Transaksi</span><span class="s3">) </span><span class="s2">ON DELETE CASCADE ON UPDATE CASCADE</span><span class="s3">;</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Transaksi</span>
+    <span class="s2">ADD FOREIGN KEY </span><span class="s3">(</span><span class="s1">ID_Pelanggan</span><span class="s3">) </span><span class="s2">REFERENCES </span><span class="s1">Pelanggan</span><span class="s3">(</span><span class="s1">ID_Pelanggan</span><span class="s3">) </span><span class="s2">ON DELETE CASCADE ON UPDATE CASCADE</span><span class="s3">;</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Pembelian_Sparepart</span>
+    <span class="s2">ADD FOREIGN KEY </span><span class="s3">(</span><span class="s1">ID_Transaksi</span><span class="s3">) </span><span class="s2">REFERENCES </span><span class="s1">Transaksi</span><span class="s3">(</span><span class="s1">ID_Transaksi</span><span class="s3">) </span><span class="s2">ON DELETE CASCADE ON UPDATE CASCADE</span><span class="s3">,</span>
+    <span class="s2">ADD FOREIGN KEY </span><span class="s3">(</span><span class="s1">ID_Sparepart</span><span class="s3">) </span><span class="s2">REFERENCES </span><span class="s1">Sparepart</span><span class="s3">(</span><span class="s1">ID_Sparepart</span><span class="s3">) </span><span class="s2">ON DELETE CASCADE ON UPDATE CASCADE</span><span class="s3">;</span>
+<span class="s2">ALTER TABLE </span><span class="s1">Pembelian_Service</span>
+    <span class="s2">ADD FOREIGN KEY </span><span class="s3">(</span><span class="s1">ID_Transaksi</span><span class="s3">) </span><span class="s2">REFERENCES </span><span class="s1">Transaksi</span><span class="s3">(</span><span class="s1">ID_Transaksi</span><span class="s3">) </span><span class="s2">ON DELETE CASCADE ON UPDATE CASCADE</span><span class="s3">,</span>
+    <span class="s2">ADD FOREIGN KEY </span><span class="s3">(</span><span class="s1">ID_Pegawai</span><span class="s3">) </span><span class="s2">REFERENCES </span><span class="s1">Pegawai</span><span class="s3">(</span><span class="s1">ID_Pegawai</span><span class="s3">) </span><span class="s2">ON DELETE CASCADE ON UPDATE CASCADE</span><span class="s3">,</span>
+    <span class="s2">ADD FOREIGN KEY </span><span class="s3">(</span><span class="s1">ID_Service</span><span class="s3">) </span><span class="s2">REFERENCES </span><span class="s1">Service</span><span class="s3">(</span><span class="s1">ID_Service</span><span class="s3">) </span><span class="s2">ON DELETE CASCADE ON UPDATE CASCADE</span><span class="s3">;</span>
+
+<span class="s0"># INSERT DATA RECORD:</span>
+<span class="s2">INSERT INTO </span><span class="s1">Jabatan </span><span class="s2">VALUES</span>
+    <span class="s3">(</span><span class="s5">'J001'</span><span class="s3">, </span><span class="s5">'MANAJER'</span><span class="s3">, </span><span class="s4">10000000</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'J002'</span><span class="s3">, </span><span class="s5">'KASIR'</span><span class="s3">, </span><span class="s4">5000000</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'J003'</span><span class="s3">, </span><span class="s5">'MONTIR'</span><span class="s3">, </span><span class="s4">7000000</span><span class="s3">);</span>
+
+<span class="s2">INSERT INTO </span><span class="s1">Pegawai </span><span class="s2">VALUES</span>
+    <span class="s3">(</span><span class="s5">'P001'</span><span class="s3">, </span><span class="s5">'J001'</span><span class="s3">, </span><span class="s5">'Budi'</span><span class="s3">, </span><span class="s5">'Jl. Bapakmu KM 5'</span><span class="s3">, </span><span class="s5">'budi'</span><span class="s3">, </span><span class="s5">'budi123'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'P002'</span><span class="s3">, </span><span class="s5">'J002'</span><span class="s3">, </span><span class="s5">'Susi'</span><span class="s3">, </span><span class="s5">'Jl. Kalimana'</span><span class="s3">, </span><span class="s5">'susi'</span><span class="s3">, </span><span class="s5">'susi123'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'P003'</span><span class="s3">, </span><span class="s5">'J003'</span><span class="s3">, </span><span class="s5">'Rudi'</span><span class="s3">, </span><span class="s5">'Jl. Jalan Aja'</span><span class="s3">, </span><span class="s5">'rudi'</span><span class="s3">, </span><span class="s5">'rudi123'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'P004'</span><span class="s3">, </span><span class="s5">'J003'</span><span class="s3">, </span><span class="s5">'Tenz'</span><span class="s3">, </span><span class="s5">'Jl. Cinta NO 20'</span><span class="s3">, </span><span class="s5">'tenz'</span><span class="s3">, </span><span class="s5">'tenz123'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'P005'</span><span class="s3">, </span><span class="s5">'J002'</span><span class="s3">, </span><span class="s5">'Melly'</span><span class="s3">, </span><span class="s5">'Jl. Valorant'</span><span class="s3">, </span><span class="s5">'melly'</span><span class="s3">, </span><span class="s5">'melly123'</span><span class="s3">);</span>
+
+<span class="s2">INSERT INTO </span><span class="s1">Nomor_Pegawai </span><span class="s2">VALUES</span>
+    <span class="s3">(</span><span class="s5">'P001'</span><span class="s3">, </span><span class="s4">1</span><span class="s3">, </span><span class="s5">'082254678967'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'P002'</span><span class="s3">, </span><span class="s4">2</span><span class="s3">, </span><span class="s5">'085647876499'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'P003'</span><span class="s3">, </span><span class="s4">3</span><span class="s3">, </span><span class="s5">'081231323123'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'P004'</span><span class="s3">, </span><span class="s4">4</span><span class="s3">, </span><span class="s5">'083213219321'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'P005'</span><span class="s3">, </span><span class="s4">5</span><span class="s3">, </span><span class="s5">'082456456456'</span><span class="s3">);</span>
+
+<span class="s2">INSERT INTO </span><span class="s1">Header_Transaksi </span><span class="s2">VALUES</span>
+    <span class="s3">(</span><span class="s5">'H001'</span><span class="s3">, </span><span class="s5">'P002'</span><span class="s3">, </span><span class="s5">'T001'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'H002'</span><span class="s3">, </span><span class="s5">'P003'</span><span class="s3">, </span><span class="s5">'T002'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'H003'</span><span class="s3">, </span><span class="s5">'P004'</span><span class="s3">, </span><span class="s5">'T003'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'H004'</span><span class="s3">, </span><span class="s5">'P005'</span><span class="s3">, </span><span class="s5">'T004'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'H005'</span><span class="s3">, </span><span class="s5">'P002'</span><span class="s3">, </span><span class="s5">'T005'</span><span class="s3">);</span>
+
+<span class="s2">INSERT INTO </span><span class="s1">Transaksi </span><span class="s2">VALUES</span>
+    <span class="s3">(</span><span class="s5">'T001'</span><span class="s3">, </span><span class="s5">'PL001'</span><span class="s3">, </span><span class="s5">'2021-01-01'</span><span class="s3">, </span><span class="s4">1000000</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'T002'</span><span class="s3">, </span><span class="s5">'PL002'</span><span class="s3">, </span><span class="s5">'2021-01-02'</span><span class="s3">, </span><span class="s4">2000000</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'T003'</span><span class="s3">, </span><span class="s5">'PL003'</span><span class="s3">, </span><span class="s5">'2021-01-03'</span><span class="s3">, </span><span class="s4">3000000</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'T004'</span><span class="s3">, </span><span class="s5">'PL004'</span><span class="s3">, </span><span class="s5">'2021-01-04'</span><span class="s3">, </span><span class="s4">4000000</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'T005'</span><span class="s3">, </span><span class="s5">'PL005'</span><span class="s3">, </span><span class="s5">'2021-01-05'</span><span class="s3">, </span><span class="s4">5000000</span><span class="s3">);</span>
+
+<span class="s2">INSERT INTO </span><span class="s1">Pembelian_Sparepart </span><span class="s2">VALUES</span>
+    <span class="s3">(</span><span class="s5">'PS001'</span><span class="s3">, </span><span class="s5">'T001'</span><span class="s3">, </span><span class="s5">'SP001'</span><span class="s3">, </span><span class="s4">10</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'PS002'</span><span class="s3">, </span><span class="s5">'T002'</span><span class="s3">, </span><span class="s5">'SP002'</span><span class="s3">, </span><span class="s4">20</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'PS003'</span><span class="s3">, </span><span class="s5">'T003'</span><span class="s3">, </span><span class="s5">'SP003'</span><span class="s3">, </span><span class="s4">30</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'PS004'</span><span class="s3">, </span><span class="s5">'T004'</span><span class="s3">, </span><span class="s5">'SP004'</span><span class="s3">, </span><span class="s4">40</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'PS005'</span><span class="s3">, </span><span class="s5">'T005'</span><span class="s3">, </span><span class="s5">'SP005'</span><span class="s3">, </span><span class="s4">50</span><span class="s3">);</span>
+
+<span class="s2">INSERT INTO </span><span class="s1">Sparepart </span><span class="s2">VALUES</span>
+    <span class="s3">(</span><span class="s5">'SP001'</span><span class="s3">, </span><span class="s5">'Ban'</span><span class="s3">, </span><span class="s4">100</span><span class="s3">, </span><span class="s5">'Kendaraan'</span><span class="s3">, </span><span class="s4">100000</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'SP002'</span><span class="s3">, </span><span class="s5">'Oli'</span><span class="s3">, </span><span class="s4">200</span><span class="s3">, </span><span class="s5">'Oli'</span><span class="s3">, </span><span class="s4">50000</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'SP003'</span><span class="s3">, </span><span class="s5">'Kampas Rem'</span><span class="s3">, </span><span class="s4">300</span><span class="s3">, </span><span class="s5">'Rem'</span><span class="s3">, </span><span class="s4">200000</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'SP004'</span><span class="s3">, </span><span class="s5">'Kampas Kopling'</span><span class="s3">, </span><span class="s4">400</span><span class="s3">, </span><span class="s5">'Kopling'</span><span class="s3">, </span><span class="s4">300000</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'SP005'</span><span class="s3">, </span><span class="s5">'Busi'</span><span class="s3">, </span><span class="s4">500</span><span class="s3">, </span><span class="s5">'Busi'</span><span class="s3">, </span><span class="s4">10000</span><span class="s3">);</span>
+
+<span class="s2">INSERT INTO </span><span class="s1">Pelanggan </span><span class="s2">VALUES</span>
+    <span class="s3">(</span><span class="s5">'PL001'</span><span class="s3">, </span><span class="s5">'Amar'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'PL002'</span><span class="s3">, </span><span class="s5">'Siti'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'PL003'</span><span class="s3">, </span><span class="s5">'Rendi'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'PL004'</span><span class="s3">, </span><span class="s5">'Rahman'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'PL005'</span><span class="s3">, </span><span class="s5">'Bima'</span><span class="s3">);</span>
+
+<span class="s2">INSERT INTO </span><span class="s1">Pembelian_Service </span><span class="s2">VALUES</span>
+    <span class="s3">(</span><span class="s5">'PS001'</span><span class="s3">, </span><span class="s5">'T001'</span><span class="s3">, </span><span class="s5">'P002'</span><span class="s3">, </span><span class="s5">'S001'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'PS002'</span><span class="s3">, </span><span class="s5">'T002'</span><span class="s3">, </span><span class="s5">'P003'</span><span class="s3">, </span><span class="s5">'S002'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'PS003'</span><span class="s3">, </span><span class="s5">'T003'</span><span class="s3">, </span><span class="s5">'P004'</span><span class="s3">, </span><span class="s5">'S003'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'PS004'</span><span class="s3">, </span><span class="s5">'T004'</span><span class="s3">, </span><span class="s5">'P005'</span><span class="s3">, </span><span class="s5">'S004'</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'PS005'</span><span class="s3">, </span><span class="s5">'T005'</span><span class="s3">, </span><span class="s5">'P002'</span><span class="s3">, </span><span class="s5">'S005'</span><span class="s3">);</span>
+
+<span class="s2">INSERT INTO </span><span class="s1">Service </span><span class="s2">VALUES</span>
+    <span class="s3">(</span><span class="s5">'S001'</span><span class="s3">, </span><span class="s5">'Ganti Oli'</span><span class="s3">, </span><span class="s4">1</span><span class="s3">, </span><span class="s4">50000</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'S002'</span><span class="s3">, </span><span class="s5">'Ganti Ban'</span><span class="s3">, </span><span class="s4">2</span><span class="s3">, </span><span class="s4">100000</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'S003'</span><span class="s3">, </span><span class="s5">'Ganti Kampas Rem'</span><span class="s3">, </span><span class="s4">3</span><span class="s3">, </span><span class="s4">150000</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'S004'</span><span class="s3">, </span><span class="s5">'Ganti Kampas Kopling'</span><span class="s3">, </span><span class="s4">4</span><span class="s3">, </span><span class="s4">200000</span><span class="s3">),</span>
+    <span class="s3">(</span><span class="s5">'S005'</span><span class="s3">, </span><span class="s5">'Ganti Busi'</span><span class="s3">, </span><span class="s4">5</span><span class="s3">, </span><span class="s4">25000</span><span class="s3">);</span>
+
+<span class="s0"># NOMOR 1:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE</span>
+    <span class="s2">PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Insert_Data_Pegawai`</span><span class="s3">(</span>
+	    <span class="s2">IN </span><span class="s1">ID_Pegawai </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">ID_Jabatan </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">Nama_Pegawai </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">Alamat </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">Username </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+        <span class="s2">IN PASSWORD VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">ID_Nomor </span><span class="s2">INT</span><span class="s3">,</span>
+        <span class="s2">IN </span><span class="s1">No_Telp </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">15</span><span class="s3">)</span>
+    <span class="s3">)</span>
+    <span class="s2">BEGIN</span>
+	    <span class="s2">INSERT INTO </span><span class="s1">Pegawai </span><span class="s2">VALUES </span><span class="s3">(</span><span class="s1">ID_Pegawai</span><span class="s3">, </span><span class="s1">ID_Jabatan</span><span class="s3">, </span><span class="s1">Nama_Pegawai</span><span class="s3">, </span><span class="s1">Alamat</span><span class="s3">, </span><span class="s1">Username</span><span class="s3">, </span><span class="s2">PASSWORD</span><span class="s3">);</span>
+        <span class="s2">INSERT INTO </span><span class="s1">Nomor_Pegawai </span><span class="s2">VALUES </span><span class="s3">(</span><span class="s1">ID_Pegawai</span><span class="s3">, </span><span class="s1">ID_Nomor</span><span class="s3">, </span><span class="s1">No_Telp</span><span class="s3">);</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+<span class="s2">CALL </span><span class="s1">Insert_Data_Pegawai</span><span class="s3">(</span><span class="s5">'P006'</span><span class="s3">, </span><span class="s5">'J001'</span><span class="s3">, </span><span class="s5">'Budi'</span><span class="s3">, </span><span class="s5">'Jl. Bapakmu KM 5'</span><span class="s3">, </span><span class="s5">'budi'</span><span class="s3">, </span><span class="s5">'budi123'</span><span class="s3">, </span><span class="s4">6</span><span class="s3">, </span><span class="s5">'082254678967'</span><span class="s3">);</span>
+
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE</span>
+    <span class="s2">PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Transaksi`</span><span class="s3">(</span>
+	    <span class="s2">IN </span><span class="s1">ID_Transaksi </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">11</span><span class="s3">),</span>
+	    <span class="s2">IN </span><span class="s1">ID_Pelanggan </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">11</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">Tanggal_Pembelian </span><span class="s2">DATE</span><span class="s3">,</span>
+	    <span class="s2">IN </span><span class="s1">Total_Biaya  </span><span class="s2">INT</span><span class="s3">,</span>
+	    <span class="s2">IN </span><span class="s1">ID_Pegawai   </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">11</span><span class="s3">),</span>
+	    <span class="s2">IN </span><span class="s1">ID_Header    </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">11</span><span class="s3">)</span>
+    <span class="s3">)</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">INSERT INTO </span><span class="s1">Transaksi </span><span class="s2">VALUES </span><span class="s3">(</span><span class="s1">ID_Transaksi</span><span class="s3">, </span><span class="s1">ID_Pelanggan</span><span class="s3">, </span><span class="s1">Tanggal_Pembelian</span><span class="s3">, </span><span class="s1">Total_Biaya</span><span class="s3">);</span>
+	    <span class="s2">INSERT INTO </span><span class="s1">Header_Transaksi </span><span class="s2">VALUES </span><span class="s3">(</span><span class="s1">ID_Header</span><span class="s3">, </span><span class="s1">ID_Pegawai</span><span class="s3">, </span><span class="s1">ID_Transaksi</span><span class="s3">);</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+<span class="s2">CALL </span><span class="s1">Transaksi</span><span class="s3">(</span><span class="s5">'T006'</span><span class="s3">, </span><span class="s5">'PL002'</span><span class="s3">, </span><span class="s5">'2021-01-06'</span><span class="s3">, </span><span class="s4">6000000</span><span class="s3">, </span><span class="s5">'P003'</span><span class="s3">, </span><span class="s5">'H006'</span><span class="s3">);</span>
+
+
+<span class="s0"># NOMOR 2:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE</span>
+    <span class="s2">PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Insert_Data_Jabatan`</span><span class="s3">(</span>
+        <span class="s2">IN </span><span class="s1">ID_Jabatan </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">Nama_Jabatan </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">Gaji </span><span class="s2">INT</span>
+    <span class="s3">)</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">INSERT INTO </span><span class="s1">Jabatan </span><span class="s2">VALUES </span><span class="s3">(</span><span class="s1">ID_Jabatan</span><span class="s3">, </span><span class="s1">Nama_Jabatan</span><span class="s3">, </span><span class="s1">Gaji</span><span class="s3">);</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE</span>
+    <span class="s2">PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Insert_Data_Pelanggan`</span><span class="s3">(</span>
+        <span class="s2">IN </span><span class="s1">ID_Pelanggan </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">Nama_Pelanggan </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">)</span>
+    <span class="s3">)</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">INSERT INTO </span><span class="s1">Pelanggan </span><span class="s2">VALUES </span><span class="s3">(</span><span class="s1">ID_Pelanggan</span><span class="s3">, </span><span class="s1">Nama_Pelanggan</span><span class="s3">);</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE</span>
+    <span class="s2">PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Insert_Data_Sparepart`</span><span class="s3">(</span>
+        <span class="s2">IN </span><span class="s1">ID_Sparepart </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">Nama_Sparepart </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">Stok </span><span class="s2">INT</span><span class="s3">,</span>
+        <span class="s2">IN </span><span class="s1">Jenis_Sparepart </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">Harga </span><span class="s2">INT</span>
+    <span class="s3">)</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">INSERT INTO </span><span class="s1">Sparepart </span><span class="s2">VALUES </span><span class="s3">(</span><span class="s1">ID_Sparepart</span><span class="s3">, </span><span class="s1">Nama_Sparepart</span><span class="s3">, </span><span class="s1">Stok</span><span class="s3">, </span><span class="s1">Jenis_Sparepart</span><span class="s3">, </span><span class="s1">Harga</span><span class="s3">);</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE</span>
+    <span class="s2">PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Insert_Data_Service`</span><span class="s3">(</span>
+        <span class="s2">IN </span><span class="s1">ID_Service </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">Nama_Service </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">Lama_Pengerjaan </span><span class="s2">INT</span><span class="s3">,</span>
+        <span class="s2">IN </span><span class="s1">Harga </span><span class="s2">INT</span>
+    <span class="s3">)</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">INSERT INTO </span><span class="s1">Service </span><span class="s2">VALUES </span><span class="s3">(</span><span class="s1">ID_Service</span><span class="s3">, </span><span class="s1">Nama_Service</span><span class="s3">, </span><span class="s1">Lama_Pengerjaan</span><span class="s3">, </span><span class="s1">Harga</span><span class="s3">);</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE</span>
+    <span class="s2">PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Insert_Data_Pembelian_Sparepart`</span><span class="s3">(</span>
+        <span class="s2">IN </span><span class="s1">ID_Pembelian_Sparepart </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">ID_Transaksi </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">ID_Sparepart </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">Jumlah_Beli </span><span class="s2">INT</span>
+    <span class="s3">)</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">INSERT INTO </span><span class="s1">Pembelian_Sparepart </span><span class="s2">VALUES </span><span class="s3">(</span><span class="s1">ID_Pembelian_Sparepart</span><span class="s3">, </span><span class="s1">ID_Transaksi</span><span class="s3">, </span><span class="s1">ID_Sparepart</span><span class="s3">, </span><span class="s1">Jumlah_Beli</span><span class="s3">);</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE</span>
+    <span class="s2">PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Insert_Data_Pembelian_Service`</span><span class="s3">(</span>
+        <span class="s2">IN </span><span class="s1">ID_Pembelian_Service </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">ID_Transaksi </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">ID_Pegawai </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">ID_Service </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">)</span>
+    <span class="s3">)</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">INSERT INTO </span><span class="s1">Pembelian_Service </span><span class="s2">VALUES </span><span class="s3">(</span><span class="s1">ID_Pembelian_Service</span><span class="s3">, </span><span class="s1">ID_Transaksi</span><span class="s3">, </span><span class="s1">ID_Pegawai</span><span class="s3">, </span><span class="s1">ID_Service</span><span class="s3">);</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s0"># NOMOR 3:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE</span>
+    <span class="s2">PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Delete_Data`</span><span class="s3">(</span>
+        <span class="s2">IN </span><span class="s1">ID </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+        <span class="s2">IN </span><span class="s1">Tabel </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">)</span>
+    <span class="s3">)</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">IF </span><span class="s1">Tabel = </span><span class="s5">'Jabatan' </span><span class="s2">THEN</span>
+            <span class="s2">DELETE FROM </span><span class="s1">Jabatan </span><span class="s2">WHERE </span><span class="s1">ID_Jabatan = ID</span><span class="s3">;</span>
+        <span class="s2">ELSEIF </span><span class="s1">Tabel = </span><span class="s5">'Pegawai' </span><span class="s2">THEN</span>
+            <span class="s2">DELETE FROM </span><span class="s1">Nomor_Pegawai </span><span class="s2">WHERE </span><span class="s1">ID_Pegawai = ID</span><span class="s3">;</span>
+            <span class="s2">DELETE FROM </span><span class="s1">Pegawai </span><span class="s2">WHERE </span><span class="s1">ID_Pegawai = ID</span><span class="s3">;</span>
+        <span class="s2">ELSEIF </span><span class="s1">Tabel = </span><span class="s5">'Nomor_Pegawai' </span><span class="s2">THEN</span>
+            <span class="s2">DELETE FROM </span><span class="s1">Nomor_Pegawai </span><span class="s2">WHERE </span><span class="s1">ID_Pegawai = ID</span><span class="s3">;</span>
+        <span class="s2">ELSEIF </span><span class="s1">Tabel = </span><span class="s5">'Header_Transaksi' </span><span class="s2">THEN</span>
+            <span class="s2">DELETE FROM </span><span class="s1">Header_Transaksi </span><span class="s2">WHERE </span><span class="s1">ID_Header = ID</span><span class="s3">;</span>
+        <span class="s2">ELSEIF </span><span class="s1">Tabel = </span><span class="s5">'Transaksi' </span><span class="s2">THEN</span>
+            <span class="s2">DELETE FROM </span><span class="s1">Transaksi </span><span class="s2">WHERE </span><span class="s1">ID_Transaksi = ID</span><span class="s3">;</span>
+        <span class="s2">ELSEIF </span><span class="s1">Tabel = </span><span class="s5">'Pembelian_Sparepart' </span><span class="s2">THEN</span>
+            <span class="s2">DELETE FROM </span><span class="s1">Pembelian_Sparepart </span><span class="s2">WHERE </span><span class="s1">ID_Pembelian_Sparepart = ID</span><span class="s3">;</span>
+        <span class="s2">ELSEIF </span><span class="s1">Tabel = </span><span class="s5">'Sparepart' </span><span class="s2">THEN</span>
+            <span class="s2">DELETE FROM </span><span class="s1">Pembelian_Sparepart </span><span class="s2">WHERE </span><span class="s1">ID_Sparepart = ID</span><span class="s3">;</span>
+            <span class="s2">DELETE FROM </span><span class="s1">Sparepart </span><span class="s2">WHERE </span><span class="s1">ID_Sparepart = ID</span><span class="s3">;</span>
+        <span class="s2">ELSEIF </span><span class="s1">Tabel = </span><span class="s5">'Pelanggan' </span><span class="s2">THEN</span>
+            <span class="s2">DELETE FROM </span><span class="s1">Transaksi </span><span class="s2">WHERE </span><span class="s1">ID_Pelanggan = ID</span><span class="s3">;</span>
+            <span class="s2">DELETE FROM </span><span class="s1">Pelanggan </span><span class="s2">WHERE </span><span class="s1">ID_Pelanggan = ID</span><span class="s3">;</span>
+        <span class="s2">ELSEIF </span><span class="s1">Tabel = </span><span class="s5">'Pembelian_Service' </span><span class="s2">THEN</span>
+            <span class="s2">DELETE FROM </span><span class="s1">Pembelian_Service </span><span class="s2">WHERE </span><span class="s1">ID_Pembelian_Service = ID</span><span class="s3">;</span>
+        <span class="s2">ELSEIF </span><span class="s1">Tabel = </span><span class="s5">'Service' </span><span class="s2">THEN</span>
+            <span class="s2">DELETE FROM </span><span class="s1">Pembelian_Service </span><span class="s2">WHERE </span><span class="s1">ID_Service = ID</span><span class="s3">;</span>
+            <span class="s2">DELETE FROM </span><span class="s1">Service </span><span class="s2">WHERE </span><span class="s1">ID_Service = ID</span><span class="s3">;</span>
+        <span class="s2">END IF</span><span class="s3">;</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+<span class="s2">CALL </span><span class="s1">Delete_Data</span><span class="s3">(</span><span class="s5">'P006'</span><span class="s3">, </span><span class="s5">'Pegawai'</span><span class="s3">);</span>
+<span class="s0"># NOMOR 4:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Update_Data_Pegawai`</span><span class="s3">(</span>
+    <span class="s2">IN </span><span class="s1">p_ID_Pegawai </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_ID_Jabatan </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_Nama_Pegawai </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_Alamat </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_Username </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_PASSWORD </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_ID_Nomor </span><span class="s2">INT</span><span class="s3">,</span>
+    <span class="s2">IN </span><span class="s1">p_No_Telp </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">15</span><span class="s3">)</span>
+<span class="s3">)</span>
+<span class="s2">BEGIN</span>
+    <span class="s2">UPDATE </span><span class="s1">Pegawai</span>
+    <span class="s2">SET</span>
+        <span class="s1">ID_Jabatan = p_ID_Jabatan</span><span class="s3">,</span>
+        <span class="s1">Nama_Pegawai = p_Nama_Pegawai</span><span class="s3">,</span>
+        <span class="s1">Alamat = p_Alamat</span><span class="s3">,</span>
+        <span class="s1">Username = p_Username</span><span class="s3">,</span>
+        <span class="s2">PASSWORD </span><span class="s1">= p_PASSWORD</span>
+    <span class="s2">WHERE </span><span class="s1">ID_Pegawai = p_ID_Pegawai</span><span class="s3">;</span>
+
+    <span class="s2">UPDATE </span><span class="s1">Nomor_Pegawai</span>
+    <span class="s2">SET</span>
+        <span class="s1">ID_Nomor = p_ID_Nomor</span><span class="s3">,</span>
+        <span class="s1">No_Telp = p_No_Telp</span>
+    <span class="s2">WHERE </span><span class="s1">ID_Pegawai = p_ID_Pegawai</span><span class="s3">;</span>
+<span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+<span class="s2">CALL </span><span class="s1">Update_Data_Pegawai</span><span class="s3">(</span><span class="s5">'P001'</span><span class="s3">, </span><span class="s5">'J001'</span><span class="s3">, </span><span class="s5">'Budi'</span><span class="s3">, </span><span class="s5">'Jl. Bapakmu KM 5'</span><span class="s3">, </span><span class="s5">'budi'</span><span class="s3">, </span><span class="s5">'budi123'</span><span class="s3">, </span><span class="s4">1</span><span class="s3">, </span><span class="s5">'082254678967'</span><span class="s3">);</span>
+
+<span class="s0"># NOMOR 5:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Update_Data_Sparepart`</span><span class="s3">(</span>
+    <span class="s2">IN </span><span class="s1">p_ID </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_Nama </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_Stok </span><span class="s2">INT</span><span class="s3">,</span>
+    <span class="s2">IN </span><span class="s1">p_Jenis </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_Harga </span><span class="s2">INT</span>
+<span class="s3">)</span>
+<span class="s2">BEGIN</span>
+    <span class="s2">UPDATE </span><span class="s1">Sparepart</span>
+    <span class="s2">SET</span>
+        <span class="s1">Nama_Sparepart = p_Nama</span><span class="s3">,</span>
+        <span class="s1">Stok = p_Stok</span><span class="s3">,</span>
+        <span class="s1">Jenis_Sparepart = p_Jenis</span><span class="s3">,</span>
+        <span class="s1">Harga = p_Harga</span>
+    <span class="s2">WHERE </span><span class="s1">ID_Sparepart = p_ID</span><span class="s3">;</span>
+<span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+<span class="s2">CALL </span><span class="s1">Update_Data_Sparepart</span><span class="s3">(</span><span class="s5">'SP001'</span><span class="s3">, </span><span class="s5">'Ban'</span><span class="s3">, </span><span class="s4">100</span><span class="s3">, </span><span class="s5">'Kendaraan'</span><span class="s3">, </span><span class="s4">150000</span><span class="s3">);</span>
+
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Update_Data_Service`</span><span class="s3">(</span>
+    <span class="s2">IN </span><span class="s1">p_ID </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_Nama </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_Lama </span><span class="s2">INT</span><span class="s3">,</span>
+    <span class="s2">IN </span><span class="s1">p_Harga </span><span class="s2">INT</span>
+<span class="s3">)</span>
+<span class="s2">BEGIN</span>
+    <span class="s2">UPDATE </span><span class="s1">Service</span>
+    <span class="s2">SET</span>
+        <span class="s1">Nama_Service = p_Nama</span><span class="s3">,</span>
+        <span class="s1">Lama_Pengerjaan = p_Lama</span><span class="s3">,</span>
+        <span class="s1">Harga = p_Harga</span>
+    <span class="s2">WHERE </span><span class="s1">ID_Service = p_ID</span><span class="s3">;</span>
+<span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Update_Data_Pelanggan`</span><span class="s3">(</span>
+    <span class="s2">IN </span><span class="s1">p_ID </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_Nama </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">)</span>
+<span class="s3">)</span>
+<span class="s2">BEGIN</span>
+    <span class="s2">UPDATE </span><span class="s1">Pelanggan</span>
+    <span class="s2">SET</span>
+        <span class="s1">Nama_Pelanggan = p_Nama</span>
+    <span class="s2">WHERE </span><span class="s1">ID_Pelanggan = p_ID</span><span class="s3">;</span>
+<span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Update_Data_Transaksi`</span><span class="s3">(</span>
+    <span class="s2">IN </span><span class="s1">p_ID </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_ID_Pelanggan </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_Tanggal </span><span class="s2">DATE</span><span class="s3">,</span>
+    <span class="s2">IN </span><span class="s1">p_Total </span><span class="s2">INT</span>
+<span class="s3">)</span>
+<span class="s2">BEGIN</span>
+    <span class="s2">UPDATE </span><span class="s1">Transaksi</span>
+    <span class="s2">SET</span>
+        <span class="s1">ID_Pelanggan = p_ID_Pelanggan</span><span class="s3">,</span>
+        <span class="s1">Tanggal_Pembelian = p_Tanggal</span><span class="s3">,</span>
+        <span class="s1">Total_Biaya = p_Total</span>
+    <span class="s2">WHERE </span><span class="s1">ID_Transaksi = p_ID</span><span class="s3">;</span>
+<span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Update_Data_Pembelian_Sparepart`</span><span class="s3">(</span>
+    <span class="s2">IN </span><span class="s1">p_ID </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_ID_Transaksi </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_ID_Sparepart </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_Jumlah </span><span class="s2">INT</span>
+<span class="s3">)</span>
+<span class="s2">BEGIN</span>
+    <span class="s2">UPDATE </span><span class="s1">Pembelian_Sparepart</span>
+    <span class="s2">SET</span>
+        <span class="s1">ID_Transaksi = p_ID_Transaksi</span><span class="s3">,</span>
+        <span class="s1">ID_Sparepart = p_ID_Sparepart</span><span class="s3">,</span>
+        <span class="s1">Jumlah_Beli = p_Jumlah</span>
+    <span class="s2">WHERE </span><span class="s1">ID_Pembelian_Sparepart = p_ID</span><span class="s3">;</span>
+<span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Update_Data_Pembelian_Service`</span><span class="s3">(</span>
+    <span class="s2">IN </span><span class="s1">p_ID </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_ID_Transaksi </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_ID_Pegawai </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_ID_Service </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">)</span>
+<span class="s3">)</span>
+<span class="s2">BEGIN</span>
+    <span class="s2">UPDATE </span><span class="s1">Pembelian_Service</span>
+    <span class="s2">SET</span>
+        <span class="s1">ID_Transaksi = p_ID_Transaksi</span><span class="s3">,</span>
+        <span class="s1">ID_Pegawai = p_ID_Pegawai</span><span class="s3">,</span>
+        <span class="s1">ID_Service = p_ID_Service</span>
+    <span class="s2">WHERE </span><span class="s1">ID_Pembelian_Service = p_ID</span><span class="s3">;</span>
+<span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Update_Data_Header_Transaksi`</span><span class="s3">(</span>
+    <span class="s2">IN </span><span class="s1">p_ID </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_ID_Pegawai </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_ID_Transaksi </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">)</span>
+<span class="s3">)</span>
+<span class="s2">BEGIN</span>
+    <span class="s2">UPDATE </span><span class="s1">Header_Transaksi</span>
+    <span class="s2">SET</span>
+        <span class="s1">ID_Pegawai = p_ID_Pegawai</span><span class="s3">,</span>
+        <span class="s1">ID_Transaksi = p_ID_Transaksi</span>
+    <span class="s2">WHERE </span><span class="s1">ID_Header = p_ID</span><span class="s3">;</span>
+<span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE PROCEDURE </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Update_Data_Jabatan`</span><span class="s3">(</span>
+    <span class="s2">IN </span><span class="s1">p_ID </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_Nama </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">50</span><span class="s3">),</span>
+    <span class="s2">IN </span><span class="s1">p_Gaji </span><span class="s2">INT</span>
+<span class="s3">)</span>
+<span class="s2">BEGIN</span>
+    <span class="s2">UPDATE </span><span class="s1">Jabatan</span>
+    <span class="s2">SET</span>
+        <span class="s1">Nama_Jabatan = p_Nama</span><span class="s3">,</span>
+        <span class="s1">Gaji = p_Gaji</span>
+    <span class="s2">WHERE </span><span class="s1">ID_Jabatan = p_ID</span><span class="s3">;</span>
+<span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s0"># NOMOR 6:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE FUNCTION </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Show_Transaksi_Pegawai`</span><span class="s3">(</span>
+    <span class="s1">p_ID_Pegawai </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">),</span>
+    <span class="s1">p_Tanggal </span><span class="s2">DATE</span>
+<span class="s3">)</span>
+<span class="s2">RETURNS TEXT</span>
+<span class="s2">BEGIN</span>
+    <span class="s2">DECLARE </span><span class="s1">str </span><span class="s2">TEXT</span><span class="s3">;</span>
+    <span class="s2">SET </span><span class="s1">str = </span><span class="s3">(</span><span class="s2">SELECT </span><span class="s1">GROUP_CONCAT</span><span class="s3">(</span><span class="s1">ID_Transaksi</span><span class="s3">) </span><span class="s2">FROM </span><span class="s1">Header_Transaksi </span><span class="s2">WHERE </span><span class="s1">ID_Pegawai = p_ID_Pegawai</span><span class="s3">);</span>
+    <span class="s2">RETURN </span><span class="s1">str</span><span class="s3">;</span>
+<span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+<span class="s2">SELECT </span><span class="s1">Show_Transaksi_Pegawai</span><span class="s3">(</span><span class="s5">'P002'</span><span class="s3">, </span><span class="s5">'2021-01-01'</span><span class="s3">);</span>
+
+<span class="s0"># NOMOR 7:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE FUNCTION </span><span class="s1">`bengkel_mobil`</span><span class="s3">.</span><span class="s1">`Show_Sparepart_Service`</span><span class="s3">(</span>
+    <span class="s1">p_ID_Transaksi </span><span class="s2">VARCHAR</span><span class="s3">(</span><span class="s4">5</span><span class="s3">)</span>
+<span class="s3">)</span>
+<span class="s2">RETURNS TEXT</span>
+<span class="s2">BEGIN</span>
+    <span class="s2">DECLARE </span><span class="s1">str </span><span class="s2">TEXT</span><span class="s3">;</span>
+    <span class="s2">SET </span><span class="s1">str = </span><span class="s3">(</span><span class="s2">SELECT </span><span class="s1">GROUP_CONCAT</span><span class="s3">(</span><span class="s1">ID_Sparepart</span><span class="s3">) </span><span class="s2">FROM </span><span class="s1">Pembelian_Sparepart </span><span class="s2">WHERE </span><span class="s1">ID_Transaksi = p_ID_Transaksi</span><span class="s3">);</span>
+    <span class="s2">SET </span><span class="s1">str = CONCAT</span><span class="s3">(</span><span class="s1">str</span><span class="s3">, </span><span class="s5">','</span><span class="s3">, (</span><span class="s2">SELECT </span><span class="s1">GROUP_CONCAT</span><span class="s3">(</span><span class="s1">ID_Service</span><span class="s3">) </span><span class="s2">FROM </span><span class="s1">Pembelian_Service </span><span class="s2">WHERE </span><span class="s1">ID_Transaksi = p_ID_Transaksi</span><span class="s3">));</span>
+    <span class="s2">RETURN </span><span class="s1">str</span><span class="s3">;</span>
+<span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+<span class="s2">SELECT </span><span class="s1">Show_Sparepart_Service</span><span class="s3">(</span><span class="s5">'T001'</span><span class="s3">);</span>
+
+<span class="s0"># PEMANGGILAN:</span>
+</pre>
+</body>
+</html>

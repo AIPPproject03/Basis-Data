@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>Modul 4 Basdat II.sql</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #bcbec4;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Modul 4 Basdat II.sql</font>
+</center></td></tr></table>
+<pre><span class="s0"># BY AIPPproject03</span>
+<span class="s0"># Nama : A.Irwin Putra Pangesti</span>
+<span class="s0"># NIM  : 223020503162</span>
+<span class="s0">#  SOAL 1:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE TRIGGER </span><span class="s1">`UpdateTotalBiayaAIPembelianService` </span><span class="s2">AFTER INSERT ON </span><span class="s1">`Pembelian_Service` </span><span class="s2">FOR EACH ROW</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">UPDATE </span><span class="s1">Transaksi</span>
+        <span class="s2">SET </span><span class="s1">Total_Biaya = Total_Biaya + </span><span class="s3">(</span><span class="s2">SELECT </span><span class="s1">Harga </span><span class="s2">FROM </span><span class="s1">Service </span><span class="s2">WHERE </span><span class="s1">ID_Service = NEW</span><span class="s3">.</span><span class="s1">ID_Service</span><span class="s3">)</span>
+        <span class="s2">WHERE </span><span class="s1">ID_Transaksi = NEW</span><span class="s3">.</span><span class="s1">ID_Transaksi</span><span class="s3">;</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s0">#  SOAL 2:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE TRIGGER </span><span class="s1">`UpdateTotalBiayaAUPembelianService` </span><span class="s2">AFTER UPDATE ON </span><span class="s1">`Pembelian_Service` </span><span class="s2">FOR EACH ROW</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">UPDATE </span><span class="s1">Transaksi</span>
+        <span class="s2">SET </span><span class="s1">Total_Biaya = Total_Biaya - </span><span class="s3">(</span><span class="s2">SELECT </span><span class="s1">Harga </span><span class="s2">FROM </span><span class="s1">Service </span><span class="s2">WHERE </span><span class="s1">ID_Service = </span><span class="s2">OLD</span><span class="s3">.</span><span class="s1">ID_Service</span><span class="s3">) </span><span class="s1">+ </span><span class="s3">(</span><span class="s2">SELECT </span><span class="s1">Harga </span><span class="s2">FROM </span><span class="s1">Service </span><span class="s2">WHERE </span><span class="s1">ID_Service = NEW</span><span class="s3">.</span><span class="s1">ID_Service</span><span class="s3">)</span>
+        <span class="s2">WHERE </span><span class="s1">ID_Transaksi = NEW</span><span class="s3">.</span><span class="s1">ID_Transaksi</span><span class="s3">;</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s0">#  SOAL 3:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE TRIGGER </span><span class="s1">`UpdateTotalBiayaADPembelianService` </span><span class="s2">AFTER DELETE ON </span><span class="s1">`Pembelian_Service` </span><span class="s2">FOR EACH ROW</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">UPDATE </span><span class="s1">Transaksi</span>
+        <span class="s2">SET </span><span class="s1">Total_Biaya = Total_Biaya - </span><span class="s3">(</span><span class="s2">SELECT </span><span class="s1">Harga </span><span class="s2">FROM </span><span class="s1">Service </span><span class="s2">WHERE </span><span class="s1">ID_Service = </span><span class="s2">OLD</span><span class="s3">.</span><span class="s1">ID_Service</span><span class="s3">)</span>
+        <span class="s2">WHERE </span><span class="s1">ID_Transaksi = </span><span class="s2">OLD</span><span class="s3">.</span><span class="s1">ID_Transaksi</span><span class="s3">;</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s0">#  SOAL 4:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE TRIGGER </span><span class="s1">`UpdateTotalBiayaAIPembelianSparepart` </span><span class="s2">AFTER INSERT ON </span><span class="s1">`Pembelian_Sparepart` </span><span class="s2">FOR EACH ROW</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">UPDATE </span><span class="s1">Transaksi</span>
+        <span class="s2">SET </span><span class="s1">Total_Biaya = Total_Biaya + </span><span class="s3">(</span><span class="s2">SELECT </span><span class="s1">Harga * NEW</span><span class="s3">.</span><span class="s1">Jumlah_Beli </span><span class="s2">FROM </span><span class="s1">Sparepart </span><span class="s2">WHERE </span><span class="s1">ID_Sparepart = NEW</span><span class="s3">.</span><span class="s1">ID_Sparepart</span><span class="s3">)</span>
+        <span class="s2">WHERE </span><span class="s1">ID_Transaksi = NEW</span><span class="s3">.</span><span class="s1">ID_Transaksi</span><span class="s3">;</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s0">#  SOAL 5:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE TRIGGER </span><span class="s1">`UpdateTotalBiayaAUPembelianSparepart` </span><span class="s2">AFTER UPDATE ON </span><span class="s1">`Pembelian_Sparepart` </span><span class="s2">FOR EACH ROW</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">UPDATE </span><span class="s1">Transaksi</span>
+        <span class="s2">SET </span><span class="s1">Total_Biaya = Total_Biaya - </span><span class="s3">(</span><span class="s2">SELECT </span><span class="s1">Harga * </span><span class="s2">OLD</span><span class="s3">.</span><span class="s1">Jumlah_Beli </span><span class="s2">FROM </span><span class="s1">Sparepart </span><span class="s2">WHERE </span><span class="s1">ID_Sparepart = </span><span class="s2">OLD</span><span class="s3">.</span><span class="s1">ID_Sparepart</span><span class="s3">) </span><span class="s1">+ </span><span class="s3">(</span><span class="s2">SELECT </span><span class="s1">Harga * NEW</span><span class="s3">.</span><span class="s1">Jumlah_Beli </span><span class="s2">FROM </span><span class="s1">Sparepart </span><span class="s2">WHERE </span><span class="s1">ID_Sparepart = NEW</span><span class="s3">.</span><span class="s1">ID_Sparepart</span><span class="s3">)</span>
+        <span class="s2">WHERE </span><span class="s1">ID_Transaksi = NEW</span><span class="s3">.</span><span class="s1">ID_Transaksi</span><span class="s3">;</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s0">#  SOAL 6:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE TRIGGER </span><span class="s1">`UpdateTotalBiayaADPembelianSparepart` </span><span class="s2">AFTER DELETE ON </span><span class="s1">`Pembelian_Sparepart` </span><span class="s2">FOR EACH ROW</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">UPDATE </span><span class="s1">Transaksi</span>
+        <span class="s2">SET </span><span class="s1">Total_Biaya = Total_Biaya - </span><span class="s3">(</span><span class="s2">SELECT </span><span class="s1">Harga * </span><span class="s2">OLD</span><span class="s3">.</span><span class="s1">Jumlah_Beli </span><span class="s2">FROM </span><span class="s1">Sparepart </span><span class="s2">WHERE </span><span class="s1">ID_Sparepart = </span><span class="s2">OLD</span><span class="s3">.</span><span class="s1">ID_Sparepart</span><span class="s3">)</span>
+        <span class="s2">WHERE </span><span class="s1">ID_Transaksi = </span><span class="s2">OLD</span><span class="s3">.</span><span class="s1">ID_Transaksi</span><span class="s3">;</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s0">#  SOAL 7:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE TRIGGER </span><span class="s1">`UpdateJumlahStokAIPembelianSparepart` </span><span class="s2">AFTER INSERT ON </span><span class="s1">`Pembelian_Sparepart` </span><span class="s2">FOR EACH ROW</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">UPDATE </span><span class="s1">Sparepart</span>
+        <span class="s2">SET </span><span class="s1">Stok = Stok - NEW</span><span class="s3">.</span><span class="s1">Jumlah_Beli</span>
+        <span class="s2">WHERE </span><span class="s1">ID_Sparepart = NEW</span><span class="s3">.</span><span class="s1">ID_Sparepart</span><span class="s3">;</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s0">#  SOAL 8:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE TRIGGER </span><span class="s1">`UpdateJumlahStokAUPembelianSparepart` </span><span class="s2">AFTER UPDATE ON </span><span class="s1">`Pembelian_Sparepart` </span><span class="s2">FOR EACH ROW</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">UPDATE </span><span class="s1">Sparepart</span>
+        <span class="s2">SET </span><span class="s1">Stok = Stok + </span><span class="s2">OLD</span><span class="s3">.</span><span class="s1">Jumlah_Beli - NEW</span><span class="s3">.</span><span class="s1">Jumlah_Beli</span>
+        <span class="s2">WHERE </span><span class="s1">ID_Sparepart = NEW</span><span class="s3">.</span><span class="s1">ID_Sparepart</span><span class="s3">;</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+
+<span class="s0">#  SOAL 9:</span>
+<span class="s2">DELIMITER </span><span class="s1">$$</span>
+<span class="s2">CREATE TRIGGER </span><span class="s1">`UpdateJumlahStokADPembelianSparepart` </span><span class="s2">AFTER DELETE ON </span><span class="s1">`Pembelian_Sparepart` </span><span class="s2">FOR EACH ROW</span>
+    <span class="s2">BEGIN</span>
+        <span class="s2">UPDATE </span><span class="s1">Sparepart</span>
+        <span class="s2">SET </span><span class="s1">Stok = Stok + </span><span class="s2">OLD</span><span class="s3">.</span><span class="s1">Jumlah_Beli</span>
+        <span class="s2">WHERE </span><span class="s1">ID_Sparepart = </span><span class="s2">OLD</span><span class="s3">.</span><span class="s1">ID_Sparepart</span><span class="s3">;</span>
+    <span class="s2">END</span><span class="s1">$$</span>
+<span class="s2">DELIMITER </span><span class="s3">;</span>
+</pre>
+</body>
+</html>
